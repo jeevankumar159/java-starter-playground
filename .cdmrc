@@ -1,2 +1,2 @@
-tabs: ['script.java']
-terminal-one: javac script.java && java script
+tabs: ["Main.java"]
+terminal-one: javac Main.java && java Main
