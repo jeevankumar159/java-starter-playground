@@ -1,2 +1,2 @@
 tabs: ["Main.java"]
-terminal-one: javac Main.java && java Main
+run-button: javac Main.java && java Main
