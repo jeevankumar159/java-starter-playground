@@ -1,3 +1,0 @@
-tabs: ['src/Logger.java', 'src/TestFile.java']
-run-button: clear && javac src/*.java && java -jar junit-platform-console-standalone.jar --class-path src --scan-class-path
-playground-view: terminal-editor
