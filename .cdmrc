@@ -1,3 +1,16 @@
-tabs: ["Main.java"]
-run-button: javac Main.java && java Main
-terminals: ["javac Main.java && java Main"]
+{
+  "language": "java",
+  "template": "default",
+  "run": {
+    "command": "javac *.java && java Main"
+  },
+  "test": {
+    "command": "/bin/bash .codedamn/test-eval.sh"
+  },
+  "files": [
+    {
+      "path": "Main.java",
+      "content": "public class Main {\n    public static int add(int a, int b) {\n        return 0; // TODO: Fix this\n    }\n    public static void main(String[] args) {\n        System.out.println(add(2, 3));\n    }\n}"
+    }
+  ]
+}
