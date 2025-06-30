@@ -1,18 +1,3 @@
-# .cdmrc
-
-# Start terminal with user greeting
-terminals:
-  - echo "Welcome to your Java coding lab!"
-
-# Open only Main.java file by default
-tabs:
-  - Main.java#5:4
-
-# Choose layout (no browser needed for backend lab)
+tabs: ['src/Logger.java', 'src/TestFile.java']
+run-button: clear && javac src/*.java && java -jar junit-platform-console-standalone.jar --class-path src --scan-class-path
 playground-view: terminal-editor
-
-# Run Code button compiles + runs user’s Java code
-run-button: javac Main.java && java Main
-
-# Test button runs the evaluation script
-test-button: bash .codedamn/test-eval.sh
