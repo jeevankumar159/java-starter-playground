@@ -1,16 +1,18 @@
-{
-  "language": "java",
-  "template": "default",
-  "run": {
-    "command": "javac *.java && java Main"
-  },
-  "test": {
-    "command": "/bin/bash .codedamn/test-eval.sh"
-  },
-  "files": [
-    {
-      "path": "Main.java",
-      "content": "public class Main {\n    public static int add(int a, int b) {\n        return 0; // TODO: Fix this\n    }\n    public static void main(String[] args) {\n        System.out.println(add(2, 3));\n    }\n}"
-    }
-  ]
-}
+# .cdmrc
+
+# Start terminal with user greeting
+terminals:
+  - echo "Welcome to your Java coding lab!"
+
+# Open only Main.java file by default
+tabs:
+  - Main.java#5:4
+
+# Choose layout (no browser needed for backend lab)
+playground-view: terminal-editor
+
+# Run Code button compiles + runs user’s Java code
+run-button: javac Main.java && java Main
+
+# Test button runs the evaluation script
+test-button: bash .codedamn/test-eval.sh
