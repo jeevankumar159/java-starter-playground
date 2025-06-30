@@ -1,43 +1,35 @@
-// File: TestFile.java
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.*;
+// src/TestFile.java
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.lang.reflect.Modifier;
 import java.util.*;
 import java.util.concurrent.*;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestFile {
 
     @Test
-    @Order(1)
     public void testSameInstance() {
         Logger l1 = Logger.getInstance();
         Logger l2 = Logger.getInstance();
-        assertSame(l1, l2, "Logger instances are not the same (Singleton failed)");
+        assertSame(l1, l2);
     }
 
     @Test
-    @Order(2)
     public void testLogOutput() {
         Logger logger = Logger.getInstance();
-        assertDoesNotThrow(() -> logger.log("Another message"));
+        logger.log("Testing log output");
+        // No exception = pass
     }
 
     @Test
-    @Order(3)
-    public void testPrivateConstructor() {
-        try {
-            var constructor = Logger.class.getDeclaredConstructor();
-            assertTrue(Modifier.isPrivate(constructor.getModifiers()), "Constructor is not private");
-        } catch (Exception e) {
-            fail("Constructor is missing or inaccessible");
-        }
+    public void testPrivateConstructor() throws Exception {
+        var constructor = Logger.class.getDeclaredConstructor();
+        assertTrue(Modifier.isPrivate(constructor.getModifiers()));
     }
 
     @Test
-    @Order(4)
-    public void testThreadSafeSingleton() throws InterruptedException, ExecutionException {
+    public void testThreadSafeSingleton() throws Exception {
         int threads = 20;
         ExecutorService executor = Executors.newFixedThreadPool(threads);
         List<Future<Logger>> futures = new ArrayList<>();
@@ -52,6 +44,6 @@ public class TestFile {
         }
 
         executor.shutdown();
-        assertEquals(1, instances.size(), "Logger is not thread-safe (multiple instances created)");
+        assertEquals(1, instances.size());
     }
 }
